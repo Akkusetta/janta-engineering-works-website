@@ -1,3 +1,7 @@
+import { inject } from '@vercel/analytics';
+
+inject();
+
 document.getElementById('year').textContent = new Date().getFullYear();
   const menuToggle = document.getElementById('menuToggle');
   const navlinks = document.getElementById('navlinks');
