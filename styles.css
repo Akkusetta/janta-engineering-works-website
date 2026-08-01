@@ -195,8 +195,8 @@
   /* ===== clients ===== */
   .client-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);align-items:stretch;}
   .client-logo{background:#fff;display:flex;align-items:center;justify-content:center;padding:22px 16px;min-height:110px;}
-  .client-logo img{max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.2s;}
-  .client-logo:hover img{filter:none;opacity:1;}
+  .client-logo img{max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.75;}
+  .client-logo:hover img{filter:grayscale(1);opacity:.75;}
   .client-text-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
   .client-text-badges span{
     font-family:'IBM Plex Mono',monospace;font-size:12.5px;border:1px solid var(--line);padding:8px 14px;color:var(--ink-soft);
