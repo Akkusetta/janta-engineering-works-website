@@ -177,13 +177,13 @@
     background:repeating-linear-gradient(-45deg,var(--yellow) 0 4px,#141414 4px 8px);}
 
   /* ===== ongoing works table ===== */
-  .doc-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);}
+  .doc-table{width:100%;border-collapse:collapse;font-size:16px;background:#fff;border:1px solid var(--line);}
   .doc-table th{
     background:var(--navy);color:#fff;text-align:left;padding:14px 16px;font-family:'Oswald',sans-serif;
-    text-transform:uppercase;font-size:12.5px;letter-spacing:.06em;font-weight:600;
+    text-transform:uppercase;font-size:14px;letter-spacing:.06em;font-weight:600;
   }
-  .doc-table td{padding:16px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-soft);}
-  .doc-table td.mono{font-family:'IBM Plex Mono',monospace;color:var(--navy);font-weight:600;}
+  .doc-table td{padding:16px;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-soft);font-size:15px;}
+  .doc-table td.mono{font-family:'IBM Plex Mono',monospace;color:var(--navy);font-weight:600;font-size:15px;}
   .doc-table tr:hover td{background:#faf8f2;}
 
   /* ===== safety strip ===== */
