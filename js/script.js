@@ -1,4 +1,30 @@
-document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+const setYear = () => {
+  document.querySelectorAll('#year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+  });
+};
+
+const footerContainer = document.getElementById('site-footer');
+if (footerContainer) {
+  const footerPath = footerContainer.dataset.footerPath || 'footer.html';
+  const rootPrefix = footerContainer.dataset.rootPrefix || '';
+  fetch(footerPath)
+    .then(response => {
+      if (!response.ok) throw new Error(`Footer load failed: ${response.status}`);
+      return response.text();
+    })
+    .then(html => {
+      footerContainer.innerHTML = html.replace(/__ROOT__/g, rootPrefix);
+      setYear();
+    })
+    .catch(err => {
+      console.warn(err);
+      footerContainer.innerHTML = '<p style="color:#fff;">Footer unavailable.</p>';
+      setYear();
+    });
+} else {
+  setYear();
+}
 
 // mobile menu
 const menuToggle = document.getElementById('menuToggle');
