@@ -141,11 +141,8 @@
   .svc-card{background:var(--paper);padding:32px 24px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:background .2s;}
   .svc-card:hover{background:#fff;}
   .svc-card .num{font-family:'IBM Plex Mono',monospace;color:var(--red);font-weight:600;font-size:14px;}
-  .svc-card h4{margin:18px 0 10px;font-size:17px;}
-  .svc-card p{color:var(--ink-soft);font-size:14.5px;}
-
-  /* ===== growth chart ===== */
-  .chart-wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center;}
+  .svc-card h4{margin:18px 0 10px;font-size:17px;color:var(--navy);}
+  .svc-card p{color:var(--ink);font-size:14.5px;}
   .chart-note{color:#a9b6c0;}
   .chart-note .badge{
     display:inline-block;margin-top:20px;padding:10px 16px;border:1px solid rgba(255,255,255,.25);
