@@ -449,3 +449,12 @@
   display:none;background:#e8f5e9;border:1px solid #4caf50;color:#245c28;padding:16px 18px;font-size:14.5px;margin-bottom:18px;border-radius:2px;
 }
 .form-success.show{display:block;}
+
+/* ===== Project detail gallery + status chip (data update) ===== */
+.pd-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
+.pd-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);}
+@media (max-width:680px){.pd-gallery{grid-template-columns:repeat(3,1fr);}}
+.status-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 9px;border-radius:2px;letter-spacing:.04em;text-transform:uppercase;}
+.status-chip.ongoing{background:var(--yellow);color:var(--navy);}
+.status-chip.completed{background:#e3ecf1;color:var(--navy);}
+.pcard .cap span.value-line{color:var(--red);font-weight:600;}
