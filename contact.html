@@ -80,20 +80,20 @@
         <div class="hazard thin" style="margin-top:30px;"></div>
       </div>
       <div class="contact-form">
-        <div class="form-success" id="formSuccess">Thanks — your message has been prepared in your mail app. If it didn't open, email us directly at jantaeworks@gmail.com.</div>
-        <form action="mailto:jantaeworks@gmail.com" method="post" enctype="text/plain" id="contactForm" novalidate>
+        <div class="form-success" id="formSuccess">Thanks — your message has been prepared in your mail app. If it didn't open, please email us directly at jantaeworks@gmail.com.</div>
+        <form autocomplete="on" id="contactForm">
           <div class="frow">
-            <div><label>Name</label><input type="text" name="name" required><span class="field-err">Please enter your name.</span></div>
-            <div><label>Phone</label><input type="tel" name="phone"><span class="field-err">Enter a valid phone number.</span></div>
+            <div><label>Name</label><input type="text" name="name" autocomplete="name" required><span class="field-err">Please enter your name.</span></div>
+            <div><label>Phone</label><input type="tel" name="phone" autocomplete="tel"><span class="field-err">Enter a valid phone number.</span></div>
           </div>
           <div class="frow">
-            <div class="full"><label>Email</label><input type="email" name="email" required><span class="field-err">Enter a valid email address.</span></div>
+            <div class="full"><label>Email</label><input type="email" name="email" autocomplete="email" required><span class="field-err">Enter a valid email address.</span></div>
           </div>
           <div class="frow">
-            <div class="full"><label>Subject</label><input type="text" name="subject" placeholder="e.g. Gate fabrication enquiry"></div>
+            <div class="full"><label>Subject</label><input type="text" name="subject" autocomplete="off" placeholder="e.g. Gate fabrication enquiry"></div>
           </div>
           <div class="frow">
-            <div class="full"><label>Message</label><textarea name="message" required></textarea><span class="field-err">Please enter a message.</span></div>
+            <div class="full"><label>Message</label><textarea name="message" autocomplete="off" required></textarea><span class="field-err">Please enter a message.</span></div>
           </div>
           <button type="submit" class="btn" style="border-radius:2px;">Send Message</button>
         </form>

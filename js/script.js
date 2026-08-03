@@ -202,6 +202,8 @@ document.addEventListener('keydown', (e) => {
 const cform = document.getElementById('contactForm');
 if (cform) {
   cform.addEventListener('submit', (e) => {
+    e.preventDefault();
+
     let valid = true;
     cform.querySelectorAll('[required]').forEach(field => {
       const errEl = field.parentElement.querySelector('.field-err');
@@ -216,13 +218,31 @@ if (cform) {
       if (errEl) errEl.classList.toggle('show', !fieldValid);
       if (!fieldValid) valid = false;
     });
-    if (!valid) {
-      e.preventDefault();
-    } else {
-      const successEl = document.getElementById('formSuccess');
-      if (successEl) successEl.classList.add('show');
-    }
+
+    if (!valid) return;
+
+    const name = cform.elements.name?.value.trim() || 'N/A';
+    const phone = cform.elements.phone?.value.trim() || 'N/A';
+    const email = cform.elements.email?.value.trim() || 'N/A';
+    const subject = cform.elements.subject?.value.trim() || 'Website enquiry';
+    const message = cform.elements.message?.value.trim() || '';
+
+    const body = [
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Email: ${email}`,
+      '',
+      'Message:',
+      message
+    ].join('\n');
+
+    const mailtoLink = `mailto:jantaeworks@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
+    const successEl = document.getElementById('formSuccess');
+    if (successEl) successEl.classList.add('show');
   });
+
   cform.querySelectorAll('input,textarea').forEach(field => {
     field.addEventListener('input', () => {
       field.classList.remove('error');
