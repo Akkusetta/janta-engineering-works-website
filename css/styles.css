@@ -471,8 +471,15 @@
 
 /* ===== Project detail gallery + status chip (data update) ===== */
 .pd-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
-.pd-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);}
-@media (max-width:680px){.pd-gallery{grid-template-columns:repeat(3,1fr);}}
+.pd-gallery img,.pd-grid .reveal > img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);cursor:zoom-in;}
+.pd-grid .reveal > img{aspect-ratio:auto;max-height:420px;object-fit:cover;}
+.pd-gallery img:hover,.pd-grid .reveal > img:hover{filter:brightness(.95);}
+.lightbox-backdrop{position:fixed;inset:0;background:rgba(7,16,27,.92);display:flex;align-items:center;justify-content:center;padding:24px;z-index:1200;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;}
+.lightbox-backdrop.show{opacity:1;visibility:visible;}
+.lightbox-frame{position:relative;max-width:min(92vw,1100px);max-height:92vh;display:flex;align-items:center;justify-content:center;}
+.lightbox-frame img{max-width:100%;max-height:92vh;object-fit:contain;border:1px solid rgba(255,255,255,.15);box-shadow:0 20px 60px rgba(0,0,0,.35);background:#fff;}
+.lightbox-close{position:absolute;top:10px;right:10px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.95);color:var(--navy);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+@media (max-width:680px){.pd-gallery{grid-template-columns:repeat(3,1fr);} .lightbox-backdrop{padding:12px;}}
 .status-chip{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 9px;border-radius:2px;letter-spacing:.04em;text-transform:uppercase;}
 .status-chip.ongoing{background:var(--yellow);color:var(--navy);}
 .status-chip.completed{background:#e3ecf1;color:var(--navy);}

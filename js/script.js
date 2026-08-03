@@ -154,6 +154,50 @@ if (searchInput && searchResults) {
   });
 }
 
+// ===== Project image lightbox =====
+const lightboxBackdrop = document.createElement('div');
+lightboxBackdrop.className = 'lightbox-backdrop';
+lightboxBackdrop.setAttribute('aria-hidden', 'true');
+lightboxBackdrop.innerHTML = '<div class="lightbox-frame"><button class="lightbox-close" type="button" aria-label="Close image">×</button><img alt=""></div>';
+document.body.appendChild(lightboxBackdrop);
+
+const lightboxImg = lightboxBackdrop.querySelector('img');
+const lightboxClose = lightboxBackdrop.querySelector('.lightbox-close');
+
+const openLightbox = (imgEl) => {
+  if (!imgEl || !lightboxImg) return;
+  lightboxImg.src = imgEl.getAttribute('src');
+  lightboxImg.alt = imgEl.getAttribute('alt') || '';
+  lightboxBackdrop.classList.add('show');
+  lightboxBackdrop.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeLightbox = () => {
+  lightboxBackdrop.classList.remove('show');
+  lightboxBackdrop.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
+
+document.querySelectorAll('.pd-gallery img, .pd-grid .reveal > img').forEach(img => {
+  img.setAttribute('tabindex', '0');
+  img.addEventListener('click', () => openLightbox(img));
+  img.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openLightbox(img);
+    }
+  });
+});
+
+lightboxBackdrop.addEventListener('click', (e) => {
+  if (e.target === lightboxBackdrop || e.target === lightboxClose) closeLightbox();
+});
+lightboxClose?.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightboxBackdrop.classList.contains('show')) closeLightbox();
+});
+
 // ===== Contact form validation =====
 const cform = document.getElementById('contactForm');
 if (cform) {
