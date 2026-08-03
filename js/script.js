@@ -61,6 +61,45 @@ document.querySelectorAll('.counter').forEach(el => {
   cIO.observe(el);
 });
 
+// ===== Recent projects carousel =====
+const projectCarousel = document.querySelector('.projects-carousel');
+if (projectCarousel) {
+  const track = projectCarousel.querySelector('.carousel-track');
+  const prevBtn = projectCarousel.querySelector('.carousel-btn.prev');
+  const nextBtn = projectCarousel.querySelector('.carousel-btn.next');
+  const cards = Array.from(track.children);
+
+  if (cards.length) {
+    let index = 0;
+    const getStep = () => {
+      const firstCard = cards[0].getBoundingClientRect();
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.columnGap || style.gap || 18);
+      return firstCard.width + gap;
+    };
+
+    const updateCarousel = () => {
+      const step = getStep();
+      track.style.transform = `translateX(-${index * step}px)`;
+      if (prevBtn) prevBtn.disabled = index === 0;
+      if (nextBtn) nextBtn.disabled = index >= cards.length - 1;
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      index = Math.max(0, index - 1);
+      updateCarousel();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      index = Math.min(cards.length - 1, index + 1);
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    window.requestAnimationFrame(updateCarousel);
+  }
+}
+
 // ===== FAQ accordion =====
 document.querySelectorAll('.faq-item').forEach(item => {
   const q = item.querySelector('.faq-q');
